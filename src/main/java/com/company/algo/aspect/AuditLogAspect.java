@@ -105,8 +105,9 @@ public class AuditLogAspect {
 
     /**
      * 保存操作日志
+     * 使用 REQUIRED 传播级别，确保与业务方法在同一事务中
      */
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class, propagation = org.springframework.transaction.annotation.Propagation.REQUIRED)
     public void saveOperationLog(String module, String operation, String bizId, String operator, String content) {
         OperationLog operationLog = new OperationLog();
         operationLog.setModule(module);
