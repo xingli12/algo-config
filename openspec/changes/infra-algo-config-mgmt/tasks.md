@@ -79,27 +79,27 @@
 - [x] 7.2.2 创建分页查询方法（支持关键字搜索）
 
 ### 7.3 Service 层
-- [ ] 7.3.1 创建 `AlgoConfigService` 接口
-- [ ] 7.3.2 实现分页查询方法（按 `updated_at` 倒序，支持关键字搜索）
-- [ ] 7.3.3 实现详情查询方法（展开态完整信息）
-- [ ] 7.3.4 实现新增方法（校验 Recipe ID 唯一性、JSON 格式、DC 配置必填）
-- [ ] 7.3.5 实现编辑方法
-- [ ] 7.3.6 实现状态切换方法（启用/停用）
-- [ ] 7.3.7 实现删除方法
-- [ ] 7.3.8 实现文件上传方法（保存到 NAS + 更新数据库路径）
-- [ ] 7.3.9 添加 `@AuditLog` 注解到所有变更方法
+- [x] 7.3.1 创建 `AlgoConfigService` 接口
+- [x] 7.3.2 实现分页查询方法（按 `updated_at` 倒序，支持关键字搜索）
+- [x] 7.3.3 实现详情查询方法（展开态完整信息）
+- [x] 7.3.4 实现新增方法（校验 Recipe ID 唯一性、JSON 格式、DC 配置必填）
+- [x] 7.3.5 实现编辑方法
+- [x] 7.3.6 实现状态切换方法（启用/停用）
+- [x] 7.3.7 实现删除方法
+- [x] 7.3.8 实现文件上传方法（保存到 NAS + 更新数据库路径）
+- [x] 7.3.9 添加 `@AuditLog` 注解到所有变更方法
 - [ ] 7.3.10 编写单元测试验证所有业务逻辑和校验规则
 
 ### 7.4 Controller 层
-- [ ] 7.4.1 创建 `AlgoConfigController`
-- [ ] 7.4.2 实现 `GET /api/algo-configs` 分页查询接口
-- [ ] 7.4.3 实现 `GET /api/algo-configs/{id}` 详情查询接口
-- [ ] 7.4.4 实现 `POST /api/algo-configs` 新增接口
-- [ ] 7.4.5 实现 `PUT /api/algo-configs/{id}` 编辑接口
-- [ ] 7.4.6 实现 `PUT /api/algo-configs/{id}/status` 状态切换接口
-- [ ] 7.4.7 实现 `DELETE /api/algo-configs/{id}` 删除接口
-- [ ] 7.4.8 实现 `POST /api/algo-configs/{id}/upload` 文件上传接口
-- [ ] 7.4.9 添加 `@RequireAdmin` 注解到所有接口
+- [x] 7.4.1 创建 `AlgoConfigController`
+- [x] 7.4.2 实现 `GET /api/algo-configs` 分页查询接口
+- [x] 7.4.3 实现 `GET /api/algo-configs/{id}` 详情查询接口
+- [x] 7.4.4 实现 `POST /api/algo-configs` 新增接口
+- [x] 7.4.5 实现 `PUT /api/algo-configs/{id}` 编辑接口
+- [x] 7.4.6 实现 `PUT /api/algo-configs/{id}/status` 状态切换接口
+- [x] 7.4.7 实现 `DELETE /api/algo-configs/{id}` 删除接口
+- [x] 7.4.8 实现 `POST /api/algo-configs/{id}/upload` 文件上传接口
+- [x] 7.4.9 添加 `@RequireAdmin` 注解到所有接口
 - [ ] 7.4.10 编写集成测试验证所有 API 接口
 
 ## 8. 镜像配置模块 (Image Config)
