@@ -9,7 +9,6 @@ import com.company.algo.domain.vo.ResourceConfigVO;
 import com.company.algo.service.ResourceConfigService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +21,6 @@ import javax.validation.Valid;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Slf4j
 @RestController
 @RequestMapping("/api/resource-configs")
 @RequireAdmin
@@ -30,6 +28,8 @@ import javax.validation.Valid;
 @Api(tags = "资源配置管理")
 public class ResourceConfigController {
 
+
+    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(ResourceConfigController.class);
     @Resource
     private ResourceConfigService resourceConfigService;
 

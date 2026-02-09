@@ -3,7 +3,7 @@ package com.company.algo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * 算法配置管理系统主应用程序

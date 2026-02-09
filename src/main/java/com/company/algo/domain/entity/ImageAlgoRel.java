@@ -3,7 +3,6 @@ package com.company.algo.domain.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
 
 import java.io.Serializable;
 
@@ -13,7 +12,6 @@ import java.io.Serializable;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Data
 @TableName("image_algo_rel")
 public class ImageAlgoRel implements Serializable {
 
@@ -34,4 +32,34 @@ public class ImageAlgoRel implements Serializable {
      * 算法名称
      */
     private String algorithmName;
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    public Long getImageId() {
+        return imageId;
+    }
+
+
+    public void setImageId(Long imageId) {
+        this.imageId = imageId;
+    }
+
+
+    public String getAlgorithmName() {
+        return algorithmName;
+    }
+
+
+    public void setAlgorithmName(String algorithmName) {
+        this.algorithmName = algorithmName;
+    }
+
 }

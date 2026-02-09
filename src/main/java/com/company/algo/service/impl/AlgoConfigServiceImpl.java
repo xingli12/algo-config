@@ -13,7 +13,6 @@ import com.company.algo.exception.BusinessException;
 import com.company.algo.repository.AlgoConfigMapper;
 import com.company.algo.service.AlgoConfigService;
 import com.company.algo.util.converter.AlgoConfigConverter;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,10 +26,11 @@ import javax.annotation.Resource;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Slf4j
 @Service
 public class AlgoConfigServiceImpl implements AlgoConfigService {
 
+
+    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(AlgoConfigServiceImpl.class);
     @Resource
     private AlgoConfigMapper algoConfigMapper;
 
@@ -101,7 +101,7 @@ public class AlgoConfigServiceImpl implements AlgoConfigService {
         }
 
         algoConfigMapper.insert(entity);
-        log.info("创建算法配置成功: id={}, recipeId={}", entity.getId(), entity.getRecipeId());
+        log.info("创建算法配置成功: id=" + entity.getId() + ", recipeId=" + entity.getRecipeId());
         return entity.getId();
     }
 
@@ -138,7 +138,7 @@ public class AlgoConfigServiceImpl implements AlgoConfigService {
         BeanUtils.copyProperties(dto, entity);
         entity.setId(id);
         algoConfigMapper.updateById(entity);
-        log.info("更新算法配置成功: id={}, recipeId={}", id, entity.getRecipeId());
+        log.info("更新算法配置成功: id=" + id + ", recipeId=" + entity.getRecipeId());
     }
 
     @Override
@@ -152,7 +152,7 @@ public class AlgoConfigServiceImpl implements AlgoConfigService {
 
         entity.setEnabled(enabled);
         algoConfigMapper.updateById(entity);
-        log.info("切换算法配置状态成功: id={}, enabled={}", id, enabled);
+        log.info("切换算法配置状态成功: id=" + id + ", enabled=" + enabled);
     }
 
     @Override
@@ -165,7 +165,7 @@ public class AlgoConfigServiceImpl implements AlgoConfigService {
         }
 
         algoConfigMapper.deleteById(id);
-        log.info("删除算法配置成功: id={}, recipeId={}", id, entity.getRecipeId());
+        log.info("删除算法配置成功: id=" + id + ", recipeId=" + entity.getRecipeId());
     }
 
     @Override
@@ -179,6 +179,6 @@ public class AlgoConfigServiceImpl implements AlgoConfigService {
 
         entity.setAlgorithmFilePath(filePath);
         algoConfigMapper.updateById(entity);
-        log.info("上传算法文件成功: id={}, filePath={}", id, filePath);
+        log.info("上传算法文件成功: id=" + id + ", filePath=" + filePath);
     }
 }

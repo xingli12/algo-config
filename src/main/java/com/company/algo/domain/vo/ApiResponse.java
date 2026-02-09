@@ -1,7 +1,6 @@
 package com.company.algo.domain.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Data;
 
 import java.io.Serializable;
 
@@ -12,7 +11,6 @@ import java.io.Serializable;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> implements Serializable {
 
@@ -37,6 +35,38 @@ public class ApiResponse<T> implements Serializable {
      * 业务数据
      */
     private T data;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessageEn() {
+        return messageEn;
+    }
+
+    public void setMessageEn(String messageEn) {
+        this.messageEn = messageEn;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
 
     /**
      * 成功响应

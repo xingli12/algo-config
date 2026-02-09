@@ -12,7 +12,6 @@ import com.company.algo.repository.ImageConfigMapper;
 import com.company.algo.repository.ResourceConfigMapper;
 import com.company.algo.service.ImageConfigService;
 import com.company.algo.util.converter.ImageConfigConverter;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,10 +28,11 @@ import java.util.stream.Collectors;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Slf4j
 @Service
 public class ImageConfigServiceImpl implements ImageConfigService {
 
+
+    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(ImageConfigServiceImpl.class);
     @Resource
     private ImageConfigMapper imageConfigMapper;
 
@@ -112,8 +112,7 @@ public class ImageConfigServiceImpl implements ImageConfigService {
             }
         }
 
-        log.info("创建镜像配置成功: id={}, imageName={}, imageTag={}",
-                entity.getId(), entity.getImageName(), entity.getImageTag());
+        log.info("创建镜像配置成功: id=" + entity.getId() + ", imageName=" + entity.getImageName() + ", imageTag=" + entity.getImageTag());
         return entity.getId();
     }
 
@@ -159,8 +158,7 @@ public class ImageConfigServiceImpl implements ImageConfigService {
             }
         }
 
-        log.info("更新镜像配置成功: id={}, imageName={}, imageTag={}",
-                id, entity.getImageName(), entity.getImageTag());
+        log.info("更新镜像配置成功: id=" + id + ", imageName=" + entity.getImageName() + ", imageTag=" + entity.getImageTag());
     }
 
     @Override
@@ -173,7 +171,7 @@ public class ImageConfigServiceImpl implements ImageConfigService {
 
         entity.setStatus(status);
         imageConfigMapper.updateById(entity);
-        log.info("切换镜像配置状态成功: id={}, status={}", id, status);
+        log.info("切换镜像配置状态成功: id=" + id + ", status=" + status);
     }
 
     @Override
@@ -196,8 +194,7 @@ public class ImageConfigServiceImpl implements ImageConfigService {
 
         // 删除镜像配置（级联删除 image_algo_rel 由数据库外键处理）
         imageConfigMapper.deleteById(id);
-        log.info("删除镜像配置成功: id={}, imageName={}, imageTag={}",
-                id, entity.getImageName(), entity.getImageTag());
+        log.info("删除镜像配置成功: id=" + id + ", imageName=" + entity.getImageName() + ", imageTag=" + entity.getImageTag());
     }
 
     @Override
@@ -208,7 +205,6 @@ public class ImageConfigServiceImpl implements ImageConfigService {
         }
 
         // TODO: 实际调用镜像部署系统
-        log.info("触发镜像部署: id={}, imageName={}, imageTag={}",
-                id, entity.getImageName(), entity.getImageTag());
+        log.info("触发镜像部署: id=" + id + ", imageName=" + entity.getImageName() + ", imageTag=" + entity.getImageTag());
     }
 }

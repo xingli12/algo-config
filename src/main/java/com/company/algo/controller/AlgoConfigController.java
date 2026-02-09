@@ -10,7 +10,6 @@ import com.company.algo.domain.vo.ApiResponse;
 import com.company.algo.domain.vo.AlgoConfigQueryVO;
 import com.company.algo.domain.vo.AlgoConfigVO;
 import com.company.algo.service.AlgoConfigService;
-import lombok.extern.slf4j.Slf4j;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -28,7 +27,6 @@ import javax.validation.Valid;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Slf4j
 @RestController
 @RequestMapping("/api/algo-configs")
 @RequireAdmin
@@ -36,6 +34,8 @@ import javax.validation.Valid;
 @Api(tags = "算法配置管理")
 public class AlgoConfigController {
 
+
+    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(AlgoConfigController.class);
     @Resource
     private AlgoConfigService algoConfigService;
 

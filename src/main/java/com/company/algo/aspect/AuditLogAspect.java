@@ -3,7 +3,6 @@ package com.company.algo.aspect;
 import com.alibaba.fastjson.JSON;
 import com.company.algo.domain.entity.OperationLog;
 import com.company.algo.repository.OperationLogMapper;
-import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -25,11 +24,12 @@ import java.time.LocalDateTime;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Slf4j
 @Aspect
 @Component
 public class AuditLogAspect {
 
+
+    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(AuditLogAspect.class);
     @Resource
     private OperationLogMapper operationLogMapper;
 
@@ -108,18 +108,18 @@ public class AuditLogAspect {
      */
     @Transactional(rollbackFor = Exception.class)
     public void saveOperationLog(String module, String operation, String bizId, String operator, String content) {
-        OperationLog log = new OperationLog();
-        log.setModule(module);
-        log.setOperation(operation);
-        log.setBizId(bizId);
-        log.setOperator(operator);
-        log.setContent(content);
-        log.setCreatedAt(LocalDateTime.now());
+        OperationLog operationLog = new OperationLog();
+        operationLog.setModule(module);
+        operationLog.setOperation(operation);
+        operationLog.setBizId(bizId);
+        operationLog.setOperator(operator);
+        operationLog.setContent(content);
+        operationLog.setCreatedAt(LocalDateTime.now());
 
         try {
-            operationLogMapper.insert(log);
+            operationLogMapper.insert(operationLog);
         } catch (Exception e) {
-            log.error("保存操作日志失败: module={}, operation={}, bizId={}", module, operation, bizId, e);
+            log.error("保存操作日志失败: module=" + module + ", operation=" + operation + ", bizId=" + bizId);
             // 日志记录失败不影响业务
         }
     }

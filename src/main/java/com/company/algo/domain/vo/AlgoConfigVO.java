@@ -1,6 +1,5 @@
 package com.company.algo.domain.vo;
 
-import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,7 +10,6 @@ import java.time.LocalDateTime;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Data
 public class AlgoConfigVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -130,4 +128,234 @@ public class AlgoConfigVO implements Serializable {
      * 更新人
      */
     private String updatedBy;
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    public String getRecipeId() {
+        return recipeId;
+    }
+
+
+    public void setRecipeId(String recipeId) {
+        this.recipeId = recipeId;
+    }
+
+
+    public String getEqpType() {
+        return eqpType;
+    }
+
+
+    public void setEqpType(String eqpType) {
+        this.eqpType = eqpType;
+    }
+
+
+    public String getEqpId() {
+        return eqpId;
+    }
+
+
+    public void setEqpId(String eqpId) {
+        this.eqpId = eqpId;
+    }
+
+
+    public String getProductId() {
+        return productId;
+    }
+
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+
+    public String getCaseName() {
+        return caseName;
+    }
+
+
+    public void setCaseName(String caseName) {
+        this.caseName = caseName;
+    }
+
+
+    public String getPythonVersion() {
+        return pythonVersion;
+    }
+
+
+    public void setPythonVersion(String pythonVersion) {
+        this.pythonVersion = pythonVersion;
+    }
+
+
+    public String getAlgorithmName() {
+        return algorithmName;
+    }
+
+
+    public void setAlgorithmName(String algorithmName) {
+        this.algorithmName = algorithmName;
+    }
+
+
+    public String getAlgorithmVersion() {
+        return algorithmVersion;
+    }
+
+
+    public void setAlgorithmVersion(String algorithmVersion) {
+        this.algorithmVersion = algorithmVersion;
+    }
+
+
+    public String getAlgorithmDesc() {
+        return algorithmDesc;
+    }
+
+
+    public void setAlgorithmDesc(String algorithmDesc) {
+        this.algorithmDesc = algorithmDesc;
+    }
+
+
+    public String getAlgorithmFilePath() {
+        return algorithmFilePath;
+    }
+
+
+    public void setAlgorithmFilePath(String algorithmFilePath) {
+        this.algorithmFilePath = algorithmFilePath;
+    }
+
+
+    public String getAlgorithmConfigJson() {
+        return algorithmConfigJson;
+    }
+
+
+    public void setAlgorithmConfigJson(String algorithmConfigJson) {
+        this.algorithmConfigJson = algorithmConfigJson;
+    }
+
+
+    public Integer getAggregateEnabled() {
+        return aggregateEnabled;
+    }
+
+
+    public void setAggregateEnabled(Integer aggregateEnabled) {
+        this.aggregateEnabled = aggregateEnabled;
+    }
+
+
+    public String getDcConfigJson() {
+        return dcConfigJson;
+    }
+
+
+    public void setDcConfigJson(String dcConfigJson) {
+        this.dcConfigJson = dcConfigJson;
+    }
+
+
+    public Integer getSendKov() {
+        return sendKov;
+    }
+
+
+    public void setSendKov(Integer sendKov) {
+        this.sendKov = sendKov;
+    }
+
+
+    public Integer getSendLis() {
+        return sendLis;
+    }
+
+
+    public void setSendLis(Integer sendLis) {
+        this.sendLis = sendLis;
+    }
+
+
+    public Integer getSendLithops() {
+        return sendLithops;
+    }
+
+
+    public void setSendLithops(Integer sendLithops) {
+        this.sendLithops = sendLithops;
+    }
+
+
+    public String getExternalSystemJson() {
+        return externalSystemJson;
+    }
+
+
+    public void setExternalSystemJson(String externalSystemJson) {
+        this.externalSystemJson = externalSystemJson;
+    }
+
+
+    public Integer getEnabled() {
+        return enabled;
+    }
+
+
+    public void setEnabled(Integer enabled) {
+        this.enabled = enabled;
+    }
+
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
 }

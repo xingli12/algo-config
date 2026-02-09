@@ -1,6 +1,5 @@
 package com.company.algo.domain.dto;
 
-import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,7 +12,6 @@ import java.util.List;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Data
 public class ImageConfigDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,4 +53,74 @@ public class ImageConfigDTO implements Serializable {
      * 关联的算法名称列表
      */
     private List<String> algorithmNames;
+
+    public String getImageCode() {
+        return imageCode;
+    }
+
+
+    public void setImageCode(String imageCode) {
+        this.imageCode = imageCode;
+    }
+
+
+    public String getImageName() {
+        return imageName;
+    }
+
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+
+    public String getImageTag() {
+        return imageTag;
+    }
+
+
+    public void setImageTag(String imageTag) {
+        this.imageTag = imageTag;
+    }
+
+
+    public String getRegistryUrl() {
+        return registryUrl;
+    }
+
+
+    public void setRegistryUrl(String registryUrl) {
+        this.registryUrl = registryUrl;
+    }
+
+
+    public String getImageSize() {
+        return imageSize;
+    }
+
+
+    public void setImageSize(String imageSize) {
+        this.imageSize = imageSize;
+    }
+
+
+    public String getImageDesc() {
+        return imageDesc;
+    }
+
+
+    public void setImageDesc(String imageDesc) {
+        this.imageDesc = imageDesc;
+    }
+
+
+    public List<String> getAlgorithmNames() {
+        return algorithmNames;
+    }
+
+
+    public void setAlgorithmNames(List<String> algorithmNames) {
+        this.algorithmNames = algorithmNames;
+    }
+
 }

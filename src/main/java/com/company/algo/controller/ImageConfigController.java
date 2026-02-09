@@ -8,7 +8,6 @@ import com.company.algo.domain.vo.ImageConfigVO;
 import com.company.algo.service.ImageConfigService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +21,6 @@ import java.util.List;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Slf4j
 @RestController
 @RequestMapping("/api/image-configs")
 @RequireAdmin
@@ -30,6 +28,8 @@ import java.util.List;
 @Api(tags = "镜像配置管理")
 public class ImageConfigController {
 
+
+    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(ImageConfigController.class);
     @Resource
     private ImageConfigService imageConfigService;
 

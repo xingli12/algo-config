@@ -14,7 +14,6 @@ import com.company.algo.repository.ResourceConfigMapper;
 import com.company.algo.service.ResourceConfigService;
 import com.company.algo.util.converter.ResourceConfigConverter;
 import com.company.algo.util.validation.ResourceFormatValidator;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,10 +27,11 @@ import javax.annotation.Resource;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Slf4j
 @Service
 public class ResourceConfigServiceImpl implements ResourceConfigService {
 
+
+    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(ResourceConfigServiceImpl.class);
     @Resource
     private ResourceConfigMapper resourceConfigMapper;
 
@@ -115,7 +115,7 @@ public class ResourceConfigServiceImpl implements ResourceConfigService {
         }
 
         resourceConfigMapper.insert(entity);
-        log.info("创建资源配置成功: id={}, algorithmName={}", entity.getId(), entity.getAlgorithmName());
+        log.info("创建资源配置成功: id=" + entity.getId() + ", algorithmName=" + entity.getAlgorithmName());
         return entity.getId();
     }
 
@@ -157,7 +157,7 @@ public class ResourceConfigServiceImpl implements ResourceConfigService {
         BeanUtils.copyProperties(dto, entity);
         entity.setId(id);
         resourceConfigMapper.updateById(entity);
-        log.info("更新资源配置成功: id={}, algorithmName={}", id, entity.getAlgorithmName());
+        log.info("更新资源配置成功: id=" + id + ", algorithmName=" + entity.getAlgorithmName());
     }
 
     @Override
@@ -169,7 +169,7 @@ public class ResourceConfigServiceImpl implements ResourceConfigService {
         }
 
         resourceConfigMapper.deleteById(id);
-        log.info("删除资源配置成功: id={}, algorithmName={}", id, entity.getAlgorithmName());
+        log.info("删除资源配置成功: id=" + id + ", algorithmName=" + entity.getAlgorithmName());
     }
 
     @Override
@@ -180,7 +180,7 @@ public class ResourceConfigServiceImpl implements ResourceConfigService {
         }
 
         // TODO: 实际调用资源配置下发系统
-        log.info("触发资源配置下发: id={}, algorithmName={}", id, entity.getAlgorithmName());
+        log.info("触发资源配置下发: id=" + id + ", algorithmName=" + entity.getAlgorithmName());
     }
 
     @Override
@@ -191,8 +191,7 @@ public class ResourceConfigServiceImpl implements ResourceConfigService {
         }
 
         // TODO: 实际创建定时调度任务
-        log.info("创建定时调度任务: id={}, algorithmName={}, cron={}",
-                id, entity.getAlgorithmName(), scheduleCron);
+        log.info("创建定时调度任务: id=" + id + ", algorithmName=" + entity.getAlgorithmName() + ", cron=" + scheduleCron);
     }
 
     @Override
@@ -208,8 +207,7 @@ public class ResourceConfigServiceImpl implements ResourceConfigService {
         // 2. 恢复目标版本的配置
         // 3. 更新 current_version 字段
 
-        log.info("回滚资源配置: id={}, algorithmName={}, targetVersion={}",
-                id, entity.getAlgorithmName(), targetVersion);
+        log.info("回滚资源配置: id=" + id + ", algorithmName=" + entity.getAlgorithmName() + ", targetVersion=" + targetVersion);
     }
 
     /**

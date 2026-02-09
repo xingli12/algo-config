@@ -1,7 +1,6 @@
 package com.company.algo.exception;
 
 import com.company.algo.domain.enums.ErrorCode;
-import lombok.Getter;
 
 /**
  * 业务异常类
@@ -9,7 +8,6 @@ import lombok.Getter;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Getter
 public class BusinessException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
@@ -28,6 +26,19 @@ public class BusinessException extends RuntimeException {
      * 英文错误信息
      */
     private final String messageEn;
+
+    public String getCode() {
+        return code;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
+
+    public String getMessageEn() {
+        return messageEn;
+    }
 
     /**
      * 使用错误码枚举构造

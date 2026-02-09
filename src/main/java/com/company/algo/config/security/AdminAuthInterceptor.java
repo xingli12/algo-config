@@ -3,7 +3,6 @@ package com.company.algo.config.security;
 import com.company.algo.domain.enums.ErrorCode;
 import com.company.algo.domain.vo.ApiResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -19,10 +18,11 @@ import java.io.IOException;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Slf4j
 @Component
 public class AdminAuthInterceptor implements HandlerInterceptor {
 
+
+    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(AdminAuthInterceptor.class);
     @Resource
     private ObjectMapper objectMapper;
 
@@ -51,7 +51,7 @@ public class AdminAuthInterceptor implements HandlerInterceptor {
         String userRole = request.getHeader("X-User-Role");
 
         if (!"admin".equalsIgnoreCase(userRole)) {
-            log.warn("未授权访问: path={}, method={}", request.getRequestURI(), request.getMethod());
+            log.warn("未授权访问: path=" + request.getRequestURI() + ", method=" + request.getMethod());
 
             response.setStatus(HttpServletResponse.SC_OK);
             response.setContentType("application/json;charset=UTF-8");

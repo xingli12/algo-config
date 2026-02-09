@@ -1,7 +1,6 @@
 package com.company.algo.domain.dto;
 
 import com.company.algo.util.validation.JsonFormat;
-import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,7 +12,6 @@ import java.io.Serializable;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Data
 public class AlgoConfigDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -109,4 +107,174 @@ public class AlgoConfigDTO implements Serializable {
      * 启用状态（0停用1启用）
      */
     private Integer enabled;
+
+    public String getRecipeId() {
+        return recipeId;
+    }
+
+
+    public void setRecipeId(String recipeId) {
+        this.recipeId = recipeId;
+    }
+
+
+    public String getEqpType() {
+        return eqpType;
+    }
+
+
+    public void setEqpType(String eqpType) {
+        this.eqpType = eqpType;
+    }
+
+
+    public String getEqpId() {
+        return eqpId;
+    }
+
+
+    public void setEqpId(String eqpId) {
+        this.eqpId = eqpId;
+    }
+
+
+    public String getProductId() {
+        return productId;
+    }
+
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+
+    public String getCaseName() {
+        return caseName;
+    }
+
+
+    public void setCaseName(String caseName) {
+        this.caseName = caseName;
+    }
+
+
+    public String getPythonVersion() {
+        return pythonVersion;
+    }
+
+
+    public void setPythonVersion(String pythonVersion) {
+        this.pythonVersion = pythonVersion;
+    }
+
+
+    public String getAlgorithmName() {
+        return algorithmName;
+    }
+
+
+    public void setAlgorithmName(String algorithmName) {
+        this.algorithmName = algorithmName;
+    }
+
+
+    public String getAlgorithmVersion() {
+        return algorithmVersion;
+    }
+
+
+    public void setAlgorithmVersion(String algorithmVersion) {
+        this.algorithmVersion = algorithmVersion;
+    }
+
+
+    public String getAlgorithmDesc() {
+        return algorithmDesc;
+    }
+
+
+    public void setAlgorithmDesc(String algorithmDesc) {
+        this.algorithmDesc = algorithmDesc;
+    }
+
+
+    public String getAlgorithmConfigJson() {
+        return algorithmConfigJson;
+    }
+
+
+    public void setAlgorithmConfigJson(String algorithmConfigJson) {
+        this.algorithmConfigJson = algorithmConfigJson;
+    }
+
+
+    public Integer getAggregateEnabled() {
+        return aggregateEnabled;
+    }
+
+
+    public void setAggregateEnabled(Integer aggregateEnabled) {
+        this.aggregateEnabled = aggregateEnabled;
+    }
+
+
+    public String getDcConfigJson() {
+        return dcConfigJson;
+    }
+
+
+    public void setDcConfigJson(String dcConfigJson) {
+        this.dcConfigJson = dcConfigJson;
+    }
+
+
+    public Integer getSendKov() {
+        return sendKov;
+    }
+
+
+    public void setSendKov(Integer sendKov) {
+        this.sendKov = sendKov;
+    }
+
+
+    public Integer getSendLis() {
+        return sendLis;
+    }
+
+
+    public void setSendLis(Integer sendLis) {
+        this.sendLis = sendLis;
+    }
+
+
+    public Integer getSendLithops() {
+        return sendLithops;
+    }
+
+
+    public void setSendLithops(Integer sendLithops) {
+        this.sendLithops = sendLithops;
+    }
+
+
+    public String getExternalSystemJson() {
+        return externalSystemJson;
+    }
+
+
+    public void setExternalSystemJson(String externalSystemJson) {
+        this.externalSystemJson = externalSystemJson;
+    }
+
+
+    public Integer getEnabled() {
+        return enabled;
+    }
+
+
+    public void setEnabled(Integer enabled) {
+        this.enabled = enabled;
+    }
+
 }

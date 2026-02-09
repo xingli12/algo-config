@@ -1,0 +1,23 @@
+# 测试数据源配置（使用 H2 内存数据库）
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=Oracle
+    username: sa
+    password:
+
+  # JPA 配置
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+  # MyBatis-Plus 配置
+  mybatis-plus:
+    mapper-locations: classpath:mapper/**/*.xml
+    type-aliases-package: com.company.algo.domain.entity
+
+logging:
+  level:
+    com.company.algo: DEBUG
+    com.company.algo.mapper: DEBUG

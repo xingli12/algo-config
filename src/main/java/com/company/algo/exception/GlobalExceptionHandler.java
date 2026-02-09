@@ -2,7 +2,8 @@ package com.company.algo.exception;
 
 import com.company.algo.domain.enums.ErrorCode;
 import com.company.algo.domain.vo.ApiResponse;
-import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -25,9 +26,10 @@ import java.util.stream.Collectors;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    private static final Log log = LogFactory.getLog(GlobalExceptionHandler.class);
 
     @Resource
     private MessageSource messageSource;
@@ -38,7 +40,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BusinessException.class)
     @ResponseStatus(HttpStatus.OK)
     public ApiResponse<Void> handleBusinessException(BusinessException e) {
-        log.warn("业务异常: code={}, message={}", e.getCode(), e.getMessage());
+        log.warn("业务异常: code=" + e.getCode() + ", message=" + e.getMessage());
         return ApiResponse.error(e.getCode(), e.getMessage(), e.getMessageEn());
     }
 
@@ -50,7 +52,7 @@ public class GlobalExceptionHandler {
     public ApiResponse<Void> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         FieldError fieldError = e.getBindingResult().getFieldError();
         String message = fieldError != null ? fieldError.getDefaultMessage() : "参数校验失败";
-        log.warn("参数校验异常: {}", message);
+        log.warn("参数校验异常: " + message);
         return ApiResponse.error(ErrorCode.C001.getCode(), message, "Parameter validation failed");
     }
 
@@ -62,7 +64,7 @@ public class GlobalExceptionHandler {
     public ApiResponse<Void> handleBindException(BindException e) {
         FieldError fieldError = e.getFieldError();
         String message = fieldError != null ? fieldError.getDefaultMessage() : "参数绑定失败";
-        log.warn("参数绑定异常: {}", message);
+        log.warn("参数绑定异常: " + message);
         return ApiResponse.error(ErrorCode.C001.getCode(), message, "Parameter binding failed");
     }
 
@@ -76,7 +78,7 @@ public class GlobalExceptionHandler {
         String message = violations.stream()
                 .map(ConstraintViolation::getMessage)
                 .collect(Collectors.joining(", "));
-        log.warn("约束违反异常: {}", message);
+        log.warn("约束违反异常: " + message);
         return ApiResponse.error(ErrorCode.C001.getCode(), message, "Constraint violation");
     }
 

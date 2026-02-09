@@ -1,6 +1,5 @@
 package com.company.algo.domain.vo;
 
-import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,7 +10,6 @@ import java.time.LocalDateTime;
  * @author Algo Config Team
  * @since 1.0.0
  */
-@Data
 public class ResourceConfigVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -80,4 +78,134 @@ public class ResourceConfigVO implements Serializable {
      * 更新时间
      */
     private LocalDateTime updatedAt;
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    public String getAlgorithmName() {
+        return algorithmName;
+    }
+
+
+    public void setAlgorithmName(String algorithmName) {
+        this.algorithmName = algorithmName;
+    }
+
+
+    public Long getImageId() {
+        return imageId;
+    }
+
+
+    public void setImageId(Long imageId) {
+        this.imageId = imageId;
+    }
+
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+
+    public String getImageVersion() {
+        return imageVersion;
+    }
+
+
+    public void setImageVersion(String imageVersion) {
+        this.imageVersion = imageVersion;
+    }
+
+
+    public String getCurrentVersion() {
+        return currentVersion;
+    }
+
+
+    public void setCurrentVersion(String currentVersion) {
+        this.currentVersion = currentVersion;
+    }
+
+
+    public String getNasId() {
+        return nasId;
+    }
+
+
+    public void setNasId(String nasId) {
+        this.nasId = nasId;
+    }
+
+
+    public String getCpuLimit() {
+        return cpuLimit;
+    }
+
+
+    public void setCpuLimit(String cpuLimit) {
+        this.cpuLimit = cpuLimit;
+    }
+
+
+    public String getMemLimit() {
+        return memLimit;
+    }
+
+
+    public void setMemLimit(String memLimit) {
+        this.memLimit = memLimit;
+    }
+
+
+    public String getCpuRequest() {
+        return cpuRequest;
+    }
+
+
+    public void setCpuRequest(String cpuRequest) {
+        this.cpuRequest = cpuRequest;
+    }
+
+
+    public String getMemRequest() {
+        return memRequest;
+    }
+
+
+    public void setMemRequest(String memRequest) {
+        this.memRequest = memRequest;
+    }
+
+
+    public String getStatus() {
+        return status;
+    }
+
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
 }
