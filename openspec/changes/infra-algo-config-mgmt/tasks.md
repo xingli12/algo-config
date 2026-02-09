@@ -138,34 +138,34 @@
 ## 9. 资源配置模块 (Resource Config)
 
 ### 9.1 Domain 层
-- [ ] 9.1.1 创建 `ResourceConfig` 实体类
-- [ ] 9.1.2 创建 `ResourceConfigDTO`、`ResourceConfigVO`
+- [x] 9.1.1 创建 `ResourceConfig` 实体类
+- [x] 9.1.2 创建 `ResourceConfigDTO`、`ResourceConfigVO`
 
 ### 9.2 Repository 层
-- [ ] 9.2.1 创建 `ResourceConfigMapper` 接口
+- [x] 9.2.1 创建 `ResourceConfigMapper` 接口
 
 ### 9.3 Service 层
-- [ ] 9.3.1 创建 `ResourceConfigService` 接口
-- [ ] 9.3.2 实现列表查询方法（按 `updated_at` 倒序）
-- [ ] 9.3.3 实现新增方法（校验资源请求 ≤ 限制、每个算法仅一个 ACTIVE 配置）
-- [ ] 9.3.4 实现编辑方法
-- [ ] 9.3.5 实现删除方法
-- [ ] 9.3.6 实现部署触发方法
-- [ ] 9.3.7 实现定时任务创建方法
-- [ ] 9.3.8 实现回滚方法（回滚到历史版本）
-- [ ] 9.3.9 添加 `@AuditLog` 注解到所有变更方法
+- [x] 9.3.1 创建 `ResourceConfigService` 接口
+- [x] 9.3.2 实现列表查询方法（按 `updated_at` 倒序）
+- [x] 9.3.3 实现新增方法（校验资源请求 ≤ 限制、每个算法仅一个 ACTIVE 配置）
+- [x] 9.3.4 实现编辑方法
+- [x] 9.3.5 实现删除方法
+- [x] 9.3.6 实现部署触发方法
+- [x] 9.3.7 实现定时任务创建方法
+- [x] 9.3.8 实现回滚方法（回滚到历史版本）
+- [x] 9.3.9 添加 `@AuditLog` 注解到所有变更方法
 - [ ] 9.3.10 编写单元测试验证所有业务逻辑和校验规则
 
 ### 9.4 Controller 层
-- [ ] 9.4.1 创建 `ResourceConfigController`
-- [ ] 9.4.2 实现 `GET /api/resource-configs` 列表查询接口
-- [ ] 9.4.3 实现 `POST /api/resource-configs` 新增接口
-- [ ] 9.4.4 实现 `PUT /api/resource-configs/{id}` 编辑接口
-- [ ] 9.4.5 实现 `DELETE /api/resource-configs/{id}` 删除接口
-- [ ] 9.4.6 实现 `POST /api/resource-configs/{id}/deploy` 部署触发接口
-- [ ] 9.4.7 实现 `POST /api/resource-configs/{id}/schedule` 定时任务接口
-- [ ] 9.4.8 实现 `POST /api/resource-configs/{id}/rollback` 回滚接口
-- [ ] 9.4.9 添加 `@RequireAdmin` 注解到所有接口
+- [x] 9.4.1 创建 `ResourceConfigController`
+- [x] 9.4.2 实现 `GET /api/resource-configs` 列表查询接口
+- [x] 9.4.3 实现 `POST /api/resource-configs` 新增接口
+- [x] 9.4.4 实现 `PUT /api/resource-configs/{id}` 编辑接口
+- [x] 9.4.5 实现 `DELETE /api/resource-configs/{id}` 删除接口
+- [x] 9.4.6 实现 `POST /api/resource-configs/{id}/deploy` 部署触发接口
+- [x] 9.4.7 实现 `POST /api/resource-configs/{id}/schedule` 定时任务接口
+- [x] 9.4.8 实现 `POST /api/resource-configs/{id}/rollback` 回滚接口
+- [x] 9.4.9 添加 `@RequireAdmin` 注解到所有接口
 - [ ] 9.4.10 编写集成测试验证所有 API 接口
 
 ## 10. 文档与部署
