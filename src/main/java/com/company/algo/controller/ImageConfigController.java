@@ -6,6 +6,8 @@ import com.company.algo.domain.dto.ImageConfigDTO;
 import com.company.algo.domain.vo.ApiResponse;
 import com.company.algo.domain.vo.ImageConfigVO;
 import com.company.algo.service.ImageConfigService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,7 @@ import java.util.List;
 @RequestMapping("/api/image-configs")
 @RequireAdmin
 @Validated
+@Api(tags = "镜像配置管理")
 public class ImageConfigController {
 
     @Resource
@@ -36,6 +39,7 @@ public class ImageConfigController {
      * @return 镜像配置列表
      */
     @GetMapping
+    @ApiOperation(value = "查询所有镜像配置", notes = "返回所有镜像配置及其关联的算法列表")
     public ApiResponse<List<ImageConfigVO>> list() {
         List<ImageConfigVO> list = imageConfigService.listAll();
         return ApiResponse.success(list);
@@ -48,6 +52,7 @@ public class ImageConfigController {
      * @return 镜像配置详情
      */
     @GetMapping("/{id}")
+    @ApiOperation(value = "查询镜像配置详情", notes = "返回镜像配置的完整信息及关联算法")
     public ApiResponse<ImageConfigVO> detail(@PathVariable Long id) {
         ImageConfigVO vo = imageConfigService.queryDetail(id);
         return ApiResponse.success(vo);
@@ -61,6 +66,7 @@ public class ImageConfigController {
      */
     @PostMapping
     @AuditLog(module = "IMAGE", operation = "CREATE")
+    @ApiOperation(value = "新增镜像配置", notes = "校验镜像名称+标签唯一性，支持关联多个算法")
     public ApiResponse<Long> create(@Valid @RequestBody ImageConfigDTO dto) {
         Long id = imageConfigService.create(dto);
         return ApiResponse.success(id);
@@ -75,6 +81,7 @@ public class ImageConfigController {
      */
     @PutMapping("/{id}")
     @AuditLog(module = "IMAGE", operation = "UPDATE")
+    @ApiOperation(value = "编辑镜像配置", notes = "更新镜像配置信息和关联算法")
     public ApiResponse<Void> update(@PathVariable Long id, @Valid @RequestBody ImageConfigDTO dto) {
         imageConfigService.update(id, dto);
         return ApiResponse.success();
@@ -89,6 +96,7 @@ public class ImageConfigController {
      */
     @PutMapping("/{id}/status")
     @AuditLog(module = "IMAGE", operation = "#{@imageConfigController.getOperationType(#status)}")
+    @ApiOperation(value = "切换镜像状态", notes = "启用或禁用镜像配置")
     public ApiResponse<Void> toggleStatus(@PathVariable Long id, @RequestParam String status) {
         imageConfigService.toggleStatus(id, status);
         return ApiResponse.success();
@@ -102,6 +110,7 @@ public class ImageConfigController {
      */
     @DeleteMapping("/{id}")
     @AuditLog(module = "IMAGE", operation = "DELETE")
+    @ApiOperation(value = "删除镜像配置", notes = "检查是否被资源配置引用，级联删除 image_algo_rel 关联")
     public ApiResponse<Void> delete(@PathVariable Long id) {
         imageConfigService.delete(id);
         return ApiResponse.success();
@@ -115,6 +124,7 @@ public class ImageConfigController {
      */
     @PostMapping("/{id}/deploy")
     @AuditLog(module = "IMAGE", operation = "DEPLOY")
+    @ApiOperation(value = "触发镜像部署", notes = "手动触发镜像部署操作")
     public ApiResponse<Void> deploy(@PathVariable Long id) {
         imageConfigService.deploy(id);
         return ApiResponse.success();

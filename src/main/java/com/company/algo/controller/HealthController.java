@@ -1,6 +1,8 @@
 package com.company.algo.controller;
 
 import com.company.algo.domain.vo.ApiResponse;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,12 +19,14 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api")
+@Api(tags = "系统管理")
 public class HealthController {
 
     /**
      * 健康检查接口
      */
     @GetMapping("/health")
+    @ApiOperation(value = "健康检查", notes = "返回服务运行状态信息")
     public ApiResponse<Map<String, Object>> health() {
         Map<String, Object> health = new HashMap<>();
         health.put("status", "UP");

@@ -7,6 +7,8 @@ import com.company.algo.domain.dto.ResourceConfigDTO;
 import com.company.algo.domain.vo.ApiResponse;
 import com.company.algo.domain.vo.ResourceConfigVO;
 import com.company.algo.service.ResourceConfigService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,7 @@ import javax.validation.Valid;
 @RequestMapping("/api/resource-configs")
 @RequireAdmin
 @Validated
+@Api(tags = "资源配置管理")
 public class ResourceConfigController {
 
     @Resource
@@ -38,6 +41,7 @@ public class ResourceConfigController {
      * @return 分页结果
      */
     @GetMapping
+    @ApiOperation(value = "分页查询资源配置", notes = "按更新时间倒序返回资源配置列表")
     public ApiResponse<IPage<ResourceConfigVO>> list(
             @RequestParam(defaultValue = "1") Integer page,
             @RequestParam(defaultValue = "10") Integer size) {
@@ -52,6 +56,7 @@ public class ResourceConfigController {
      * @return 资源配置详情
      */
     @GetMapping("/{id}")
+    @ApiOperation(value = "查询资源配置详情", notes = "返回资源配置的完整信息")
     public ApiResponse<ResourceConfigVO> detail(@PathVariable Long id) {
         ResourceConfigVO vo = resourceConfigService.queryDetail(id);
         return ApiResponse.success(vo);
@@ -65,6 +70,7 @@ public class ResourceConfigController {
      */
     @PostMapping
     @AuditLog(module = "RESOURCE", operation = "CREATE")
+    @ApiOperation(value = "新增资源配置", notes = "校验资源请求 ≤ 限制、每个算法仅一个 ACTIVE 配置")
     public ApiResponse<Long> create(@Valid @RequestBody ResourceConfigDTO dto) {
         Long id = resourceConfigService.create(dto);
         return ApiResponse.success(id);
@@ -79,6 +85,7 @@ public class ResourceConfigController {
      */
     @PutMapping("/{id}")
     @AuditLog(module = "RESOURCE", operation = "UPDATE")
+    @ApiOperation(value = "编辑资源配置", notes = "更新资源配置的参数和状态")
     public ApiResponse<Void> update(@PathVariable Long id, @Valid @RequestBody ResourceConfigDTO dto) {
         resourceConfigService.update(id, dto);
         return ApiResponse.success();
@@ -92,6 +99,7 @@ public class ResourceConfigController {
      */
     @DeleteMapping("/{id}")
     @AuditLog(module = "RESOURCE", operation = "DELETE")
+    @ApiOperation(value = "删除资源配置", notes = "删除指定的资源配置")
     public ApiResponse<Void> delete(@PathVariable Long id) {
         resourceConfigService.delete(id);
         return ApiResponse.success();
@@ -105,6 +113,7 @@ public class ResourceConfigController {
      */
     @PostMapping("/{id}/deploy")
     @AuditLog(module = "RESOURCE", operation = "DEPLOY")
+    @ApiOperation(value = "触发资源配置下发", notes = "手动触发资源配置下发/启动操作")
     public ApiResponse<Void> deploy(@PathVariable Long id) {
         resourceConfigService.deploy(id);
         return ApiResponse.success();
@@ -119,6 +128,7 @@ public class ResourceConfigController {
      */
     @PostMapping("/{id}/schedule")
     @AuditLog(module = "RESOURCE", operation = "CREATE")
+    @ApiOperation(value = "创建定时调度任务", notes = "为资源配置创建定时调度任务")
     public ApiResponse<Void> schedule(
             @PathVariable Long id,
             @RequestParam String scheduleCron) {
@@ -135,6 +145,7 @@ public class ResourceConfigController {
      */
     @PostMapping("/{id}/rollback")
     @AuditLog(module = "RESOURCE", operation = "ROLLBACK")
+    @ApiOperation(value = "回滚到历史版本", notes = "将资源配置回滚到指定的历史版本")
     public ApiResponse<Void> rollback(
             @PathVariable Long id,
             @RequestParam String targetVersion) {

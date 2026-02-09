@@ -11,9 +11,13 @@ import com.company.algo.domain.vo.AlgoConfigQueryVO;
 import com.company.algo.domain.vo.AlgoConfigVO;
 import com.company.algo.service.AlgoConfigService;
 import lombok.extern.slf4j.Slf4j;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -29,6 +33,7 @@ import javax.validation.Valid;
 @RequestMapping("/api/algo-configs")
 @RequireAdmin
 @Validated
+@Api(tags = "算法配置管理")
 public class AlgoConfigController {
 
     @Resource
@@ -41,6 +46,7 @@ public class AlgoConfigController {
      * @return 分页结果
      */
     @GetMapping
+    @ApiOperation(value = "分页查询算法配置", notes = "支持按算法名称、Recipe ID、Product ID 进行关键字搜索")
     public ApiResponse<IPage<AlgoConfigVO>> list(@Valid AlgoConfigQueryVO queryVO) {
         IPage<AlgoConfigVO> page = algoConfigService.queryPage(
                 queryVO.getPage(),
@@ -57,6 +63,7 @@ public class AlgoConfigController {
      * @return 算法配置详情
      */
     @GetMapping("/{id}")
+    @ApiOperation(value = "查询算法配置详情", notes = "返回算法配置的完整信息，包括配置开关、时间戳等")
     public ApiResponse<AlgoConfigVO> detail(@PathVariable Long id) {
         AlgoConfigVO vo = algoConfigService.queryDetail(id);
         return ApiResponse.success(vo);
@@ -70,6 +77,7 @@ public class AlgoConfigController {
      */
     @PostMapping
     @AuditLog(module = "ALGO", operation = "CREATE")
+    @ApiOperation(value = "新增算法配置", notes = "校验 Recipe ID 唯一性、JSON 格式、DC 配置必填等规则")
     public ApiResponse<Long> create(@Valid @RequestBody AlgoConfigDTO dto) {
         Long id = algoConfigService.create(dto);
         return ApiResponse.success(id);
@@ -84,6 +92,7 @@ public class AlgoConfigController {
      */
     @PutMapping("/{id}")
     @AuditLog(module = "ALGO", operation = "UPDATE")
+    @ApiOperation(value = "编辑算法配置", notes = "更新算法配置的基本信息和配置参数")
     public ApiResponse<Void> update(@PathVariable Long id, @Valid @RequestBody AlgoConfigDTO dto) {
         algoConfigService.update(id, dto);
         return ApiResponse.success();
@@ -98,6 +107,7 @@ public class AlgoConfigController {
      */
     @PutMapping("/{id}/status")
     @AuditLog(module = "ALGO", operation = "#{@algoConfigController.getOperationType(#enabled)}")
+    @ApiOperation(value = "切换算法配置状态", notes = "启用或停用算法配置")
     public ApiResponse<Void> toggleStatus(@PathVariable Long id, @RequestParam Integer enabled) {
         algoConfigService.toggleStatus(id, enabled);
         return ApiResponse.success();
@@ -111,6 +121,7 @@ public class AlgoConfigController {
      */
     @DeleteMapping("/{id}")
     @AuditLog(module = "ALGO", operation = "DELETE")
+    @ApiOperation(value = "删除算法配置", notes = "删除指定的算法配置，删除后不可恢复")
     public ApiResponse<Void> delete(@PathVariable Long id) {
         algoConfigService.delete(id);
         return ApiResponse.success();
@@ -124,6 +135,7 @@ public class AlgoConfigController {
      */
     @PostMapping("/{id}/upload")
     @AuditLog(module = "ALGO", operation = "CREATE")
+    @ApiOperation(value = "上传算法文件", notes = "上传 .py 格式的算法文件到 NAS 存储")
     public ApiResponse<String> uploadFile(@PathVariable Long id) {
         // TODO: 实现文件上传逻辑
         // 1. 接收 MultipartFile
