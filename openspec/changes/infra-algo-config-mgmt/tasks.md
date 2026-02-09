@@ -105,34 +105,34 @@
 ## 8. 镜像配置模块 (Image Config)
 
 ### 8.1 Domain 层
-- [ ] 8.1.1 创建 `ImageConfig` 实体类
-- [ ] 8.1.2 创建 `ImageAlgoRel` 实体类
-- [ ] 8.1.3 创建 `ImageConfigDTO`、`ImageConfigVO`
+- [x] 8.1.1 创建 `ImageConfig` 实体类
+- [x] 8.1.2 创建 `ImageAlgoRel` 实体类
+- [x] 8.1.3 创建 `ImageConfigDTO`、`ImageConfigVO`
 
 ### 8.2 Repository 层
-- [ ] 8.2.1 创建 `ImageConfigMapper` 接口
-- [ ] 8.2.2 创建 `ImageAlgoRelMapper` 接口
+- [x] 8.2.1 创建 `ImageConfigMapper` 接口
+- [x] 8.2.2 创建 `ImageAlgoRelMapper` 接口
 
 ### 8.3 Service 层
-- [ ] 8.3.1 创建 `ImageConfigService` 接口
-- [ ] 8.3.2 实现列表查询方法（含关联算法）
-- [ ] 8.3.3 实现新增方法（校验镜像名称+标签唯一性）
-- [ ] 8.3.4 实现编辑方法
-- [ ] 8.3.5 实现状态切换方法（启用/禁用）
-- [ ] 8.3.6 实现删除方法（检查 `resource_config` 依赖，级联删除 `image_algo_rel`）
-- [ ] 8.3.7 实现部署触发方法
-- [ ] 8.3.8 添加 `@AuditLog` 注解到所有变更方法
+- [x] 8.3.1 创建 `ImageConfigService` 接口
+- [x] 8.3.2 实现列表查询方法（含关联算法）
+- [x] 8.3.3 实现新增方法（校验镜像名称+标签唯一性）
+- [x] 8.3.4 实现编辑方法
+- [x] 8.3.5 实现状态切换方法（启用/禁用）
+- [x] 8.3.6 实现删除方法（检查 `resource_config` 依赖，级联删除 `image_algo_rel`）
+- [x] 8.3.7 实现部署触发方法
+- [x] 8.3.8 添加 `@AuditLog` 注解到所有变更方法
 - [ ] 8.3.9 编写单元测试验证所有业务逻辑和校验规则
 
 ### 8.4 Controller 层
-- [ ] 8.4.1 创建 `ImageConfigController`
-- [ ] 8.4.2 实现 `GET /api/image-configs` 列表查询接口
-- [ ] 8.4.3 实现 `POST /api/image-configs` 新增接口
-- [ ] 8.4.4 实现 `PUT /api/image-configs/{id}` 编辑接口
-- [ ] 8.4.5 实现 `PUT /api/image-configs/{id}/status` 状态切换接口
-- [ ] 8.4.6 实现 `DELETE /api/image-configs/{id}` 删除接口
-- [ ] 8.4.7 实现 `POST /api/image-configs/{id}/deploy` 部署触发接口
-- [ ] 8.4.8 添加 `@RequireAdmin` 注解到所有接口
+- [x] 8.4.1 创建 `ImageConfigController`
+- [x] 8.4.2 实现 `GET /api/image-configs` 列表查询接口
+- [x] 8.4.3 实现 `POST /api/image-configs` 新增接口
+- [x] 8.4.4 实现 `PUT /api/image-configs/{id}` 编辑接口
+- [x] 8.4.5 实现 `PUT /api/image-configs/{id}/status` 状态切换接口
+- [x] 8.4.6 实现 `DELETE /api/image-configs/{id}` 删除接口
+- [x] 8.4.7 实现 `POST /api/image-configs/{id}/deploy` 部署触发接口
+- [x] 8.4.8 添加 `@RequireAdmin` 注解到所有接口
 - [ ] 8.4.9 编写集成测试验证所有 API 接口
 
 ## 9. 资源配置模块 (Resource Config)
