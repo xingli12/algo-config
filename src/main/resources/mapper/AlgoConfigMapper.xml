@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.algo.repository.AlgoConfigMapper">
+
+    <!-- 分页查询（支持关键字搜索） -->
+    <select id="selectPageWithKeyword" resultType="com.company.algo.domain.entity.AlgoConfig">
+        SELECT *
+        FROM algo_config
+        <where>
+            <if test="keyword != null and keyword != ''">
+                AND (
+                    algorithm_name LIKE CONCAT('%', #{keyword}, '%')
+                    OR recipe_id LIKE CONCAT('%', #{keyword}, '%')
+                    OR product_id LIKE CONCAT('%', #{keyword}, '%')
+                )
+            </if>
+        </where>
+        ORDER BY updated_at DESC
+    </select>
+
+</mapper>
